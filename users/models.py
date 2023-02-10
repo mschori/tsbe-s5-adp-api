@@ -20,7 +20,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email_confirmed = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['email', 'password', 'firstname', 'lastname']
+    REQUIRED_FIELDS = ['firstname', 'lastname']
 
     objects = CustomUserManager()
 
