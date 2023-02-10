@@ -3,10 +3,12 @@ from django.urls import path, include
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from users.urls import router as users_router
+from todo.urls import router as todo_router
+from users.urls import router as user_router
 
 router = routers.DefaultRouter(trailing_slash=False)
-router.registry.extend(users_router.registry)
+router.registry.extend(user_router.registry)
+router.registry.extend(todo_router.registry)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
