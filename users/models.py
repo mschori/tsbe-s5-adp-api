@@ -15,6 +15,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=254, unique=True)
     firstname = models.CharField(max_length=50, null=False)
     lastname = models.CharField(max_length=50, null=False)
+    is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
     email_confirmed = models.BooleanField(default=False)
