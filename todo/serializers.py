@@ -6,4 +6,8 @@ from .models import Todo
 class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
-        fields = '__all__'
+        exclude = ['user']
+
+    def save(self, **kwargs):
+        kwargs['user'] = self.context['request'].user
+        return super().save(**kwargs)
