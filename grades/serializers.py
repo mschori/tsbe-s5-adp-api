@@ -6,7 +6,11 @@ from .models import Module, Grade
 class ModuleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Module
-        fields = '__all__'
+        exclude = ('user',)
+
+    def create(self, validated_data):
+        validated_data['user'] = self.context['request'].user
+        return super().create(validated_data)
 
 
 class GradeSerializer(serializers.ModelSerializer):
@@ -19,8 +23,9 @@ class GradeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Grade
-        exclude = ('user',)
+        fields = '__all__'
 
-    def create(self, validated_data):
-        validated_data['user'] = self.context['request'].user
-        return super().create(validated_data)
+    def validate_module_pk(self, value):
+        if value.user != self.context['request'].user:
+            raise serializers.ValidationError('You do not own this module.')
+        return value
