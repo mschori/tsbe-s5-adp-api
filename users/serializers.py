@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'email', 'firstname', 'lastname', 'dated_joined', 'last_login')
+        fields = ('id', 'email', 'firstname', 'lastname', 'date_joined', 'last_login')
 
 
 class SignupSerializer(serializers.ModelSerializer):
@@ -43,10 +43,8 @@ class SignupSerializer(serializers.ModelSerializer):
             lastname=validated_data['lastname'],
             is_active=True
         )
-
         user.set_password(validated_data['password'])
         user.save()
-
         return user
 
 
