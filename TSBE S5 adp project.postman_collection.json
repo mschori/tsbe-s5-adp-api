@@ -1,0 +1,862 @@
+{
+	"info": {
+		"_postman_id": "c02474d8-bf3c-4114-ac05-84b62cd6a943",
+		"name": "TSBE S5 adp project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23620535"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test4@test.ch",
+									"type": "text"
+								},
+								{
+									"key": "firstname",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "User",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "sml12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Host}}/api/signup",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test@test.ch",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "sml12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Host}}/api/signin",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Todo",
+			"item": [
+				{
+					"name": "Get all my Todos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT-Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/{{Api-Version}}/todos",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"{{Api-Version}}",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get my Todo with ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT-Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/{{Api-Version}}/todos/4\n",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"{{Api-Version}}",
+								"todos",
+								"4\n"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Todo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT-Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "My Test todo",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "I need to test the release.",
+									"type": "text"
+								},
+								{
+									"key": "due_date",
+									"value": "2023-02-20",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Host}}/api/{{Api-Version}}/todos",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"{{Api-Version}}",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Todo - PUT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT-Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "My Test todo.",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "I need to test the release!",
+									"type": "text"
+								},
+								{
+									"key": "due_date",
+									"value": "2023-02-21",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Host}}/api/{{Api-Version}}/todos/4",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"{{Api-Version}}",
+								"todos",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Todo - PATCH",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT-Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "My Test todo",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "I need to test the release.",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "due_date",
+									"value": "2023-02-22",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "is_completed",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Host}}/api/{{Api-Version}}/todos/4",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"{{Api-Version}}",
+								"todos",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Todo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT-Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{Host}}/api/{{Api-Version}}/todos/3",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"{{Api-Version}}",
+								"todos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Grades",
+			"item": [
+				{
+					"name": "Modules",
+					"item": [
+						{
+							"name": "Get all Modules",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{JWT-Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Host}}/api/{{Api-Version}}/modules",
+									"host": [
+										"{{Host}}"
+									],
+									"path": [
+										"api",
+										"{{Api-Version}}",
+										"modules"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Module with ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{JWT-Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Host}}/api/{{Api-Version}}/modules/1",
+									"host": [
+										"{{Host}}"
+									],
+									"path": [
+										"api",
+										"{{Api-Version}}",
+										"modules",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Module",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{JWT-Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Modul 42",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Das ist ein Testmodul.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{Host}}/api/{{Api-Version}}/modules",
+									"host": [
+										"{{Host}}"
+									],
+									"path": [
+										"api",
+										"{{Api-Version}}",
+										"modules"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Module - PUT",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{JWT-Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Modul 51",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Das ist ein Testmodul.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{Host}}/api/{{Api-Version}}/modules/2",
+									"host": [
+										"{{Host}}"
+									],
+									"path": [
+										"api",
+										"{{Api-Version}}",
+										"modules",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Module - PATCH",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{JWT-Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Modul 50",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "Das ist ein Testmodul...",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{Host}}/api/{{Api-Version}}/modules/2",
+									"host": [
+										"{{Host}}"
+									],
+									"path": [
+										"api",
+										"{{Api-Version}}",
+										"modules",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Module",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{JWT-Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Modul 50",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Das ist ein Testmodul.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{Host}}/api/{{Api-Version}}/modules/2",
+									"host": [
+										"{{Host}}"
+									],
+									"path": [
+										"api",
+										"{{Api-Version}}",
+										"modules",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Grades",
+					"item": [
+						{
+							"name": "Get all my Grades",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{JWT-Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Host}}/api/{{Api-Version}}/grades",
+									"host": [
+										"{{Host}}"
+									],
+									"path": [
+										"api",
+										"{{Api-Version}}",
+										"grades"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Grade with ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{JWT-Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Host}}/api/{{Api-Version}}/grades/5",
+									"host": [
+										"{{Host}}"
+									],
+									"path": [
+										"api",
+										"{{Api-Version}}",
+										"grades",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Grade",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{JWT-Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "module_pk",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "grade",
+											"value": "5.75",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "My first grade",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{Host}}/api/{{Api-Version}}/grades",
+									"host": [
+										"{{Host}}"
+									],
+									"path": [
+										"api",
+										"{{Api-Version}}",
+										"grades"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Grade - PUT",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{JWT-Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "module_pk",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "grade",
+											"value": "5.75",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "My second grade",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{Host}}/api/{{Api-Version}}/grades/5",
+									"host": [
+										"{{Host}}"
+									],
+									"path": [
+										"api",
+										"{{Api-Version}}",
+										"grades",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Grade - PATCH",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{JWT-Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "module_pk",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "grade",
+											"value": "5.75",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "title",
+											"value": "My second grade...",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{Host}}/api/{{Api-Version}}/grades/5",
+									"host": [
+										"{{Host}}"
+									],
+									"path": [
+										"api",
+										"{{Api-Version}}",
+										"grades",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Grade",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{JWT-Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "module_pk",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "grade",
+											"value": "5.75",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "title",
+											"value": "My second grade...",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{Host}}/api/{{Api-Version}}/grades/3",
+									"host": [
+										"{{Host}}"
+									],
+									"path": [
+										"api",
+										"{{Api-Version}}",
+										"grades",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
